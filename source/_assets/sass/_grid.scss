@@ -1,0 +1,66 @@
+.flex-grid {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    width: 100%;
+
+    [class*="fg-"] {
+        flex-grow: 0;
+        flex-shrink: 0;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    @for $i from 1 through 12 {
+        .fg-#{$i} {
+            flex-basis: calc(((#{$i} / 12) * 100%) - 15px);
+        }
+        .fg-med-#{$i}{
+            @include tablet{
+                flex-basis: calc(((#{$i} / 12) * 100%) - 15px);
+            }
+        }
+        .fg-large-#{$i}{
+            @include desktop{
+                flex-basis: calc(((#{$i} / 12) * 100%) - 15px) !important;
+            }
+        }
+    }
+
+    @for $i from 1 through 6 {
+        .fg-small-#{$i} {
+            flex-basis: calc(((#{$i} / 6) * 100%) - 15px);
+        }
+    }
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    @include tablet{
+        grid-template-columns: 1fr 1fr;
+    }
+    @include desktop{
+        grid-template-columns: repeat(16, 1fr);
+    }
+    //change iniitial grid-gap value to fit design
+    grid-gap: 40px;
+}
+
+@for $i from 1 through 16 {
+    .grid-#{$i} {
+        @include desktop{
+            grid-column: span #{$i};
+        }
+    }
+}

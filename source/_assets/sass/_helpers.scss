@@ -1,0 +1,224 @@
+// Margin and Padding
+
+$sizes: (
+    "none": 0px,
+    "small": 5px,
+    "medium": 15px,
+    "large": 25px,
+    "xlarge": 50px
+);
+
+@each $name, $size in ($sizes) {
+  .mt-#{$name}{
+    margin-top: #{$size} !important;
+  }
+  .mb-#{$name}{
+    margin-bottom: #{$size} !important;
+  }
+  .ml-#{$name}{
+    margin-left: #{$size} !important;
+  }
+  .mr-#{$name}{
+    margin-right: #{$size} !important;
+  }
+}
+
+.mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.m-none{
+    margin: 0 !important;
+}
+
+@each $name, $size in ($sizes) {
+  .pt-#{$name}{
+    padding-top: #{$size};
+  }
+  .pb-#{$name}{
+    padding-bottom: #{$size};
+  }
+  .pl-#{$name}{
+    padding-left: #{$size} !important;
+  }
+  .pr-#{$name}{
+    padding-right: #{$size} !important;
+  }
+  .px-#{$name}{
+      padding-left: #{$size} !important;
+      padding-right: #{$size} !important;
+  }
+  .py-#{$name}{
+      padding-top: #{$size} !important;
+      padding-bottom: #{$size} !important;
+  }
+  .p-#{$name}{
+      padding: #{$size} !important;
+  }
+}
+
+.hide-small{
+    display: none;
+    @include tablet{
+        display:block;
+    }
+}
+
+.flex.no-flex--small{
+    display:block !important;
+    @include tablet{
+        display:flex !important;
+    }
+}
+.flex.no-flex--tablet{
+    display:block !important;
+    @include desktop{
+        display:flex !important;
+    }
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-row{
+    flex-direction: row;
+}
+
+.flex-column{
+    flex-direction: column;
+}
+
+.flex-wrap{
+    flex-wrap: wrap;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+//object-fit
+//applied to the containing element
+.img-object{
+  width: 100%;
+  height: 100%;
+  img{
+      object-fit: cover;
+      max-height: 100%;
+      height: 100%;
+      width: 100%;
+  }
+}
+
+//alternative to above -- applied directly to img element
+.object-fit{
+    object-fit: cover;
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+}
+
+//applied directly to img element
+.object-bottom{ object-position: bottom }
+.object-center{	object-position: center; }
+.object-left{ object-position: left; }
+.object-left-bottom{ object-position: left bottom; }
+.object-left-top{ object-position: left top; }
+.object-right{ object-position: right; }
+.object-right-bottom{ object-position: right bottom; }
+.object-right-top{ object-position: right top; }
+.object-top{ object-position: top; }
+
+/*----------- Overflow -----------*/
+
+.overflow-hidden{ overflow: hidden; }
+.overflow-visible{ overflow: visible; }
+.overflow-scroll{ overflow: scroll; }
+.overflow-x-hidden{ overflow-x: hidden; }
+.overflow-y-hidden{ overflow-y: hidden; }
+.overflow-x-scroll{ overflow-x: scroll; }
+.overflow-y-scroll{ overflow-y: scroll; }
+
+
+/*----------- Position -----------*/
+.fixed{ position: fixed; }
+.absolute{ position: absolute; }
+.relative{ position: relative; }
+.sticky{ position: sticky; top: 0; }
+
+
+
+.overflow-ellipsis{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/*----------- Typography Helpers -----------*/
+
+.text-right{
+    @include desktop{
+        text-align: right;
+    }
+}
+
+.text-center{
+    text-align: center;
+}
+
+.uppercase{
+    text-transform:uppercase;
+}
+
+.text-reversed{
+    color: $text-reversed-color;
+}
+
+.italic	{
+    font-style: italic;
+}
+
+.underline{
+    text-decoration: underline;
+}
+
+.text-color_primary{
+    color: $text-primary-color;
+}
+
+.text-color_secondary{
+    color: $text-secondary-color;
+}
+
+
+$weights: ("1": 100,"2":200,"3":300,"4":400,"5":500,"6":600,"7":700,"8":800,"9":900);
+
+@each $name, $weight in ($weights) {
+    .fw-#{$name}{
+      font-weight: #{$weight};
+    }
+}
+
+
+/*----------- Lists -----------*/
+
+.list-disc{	list-style-type: disc; }
+.list-inside{ list-style-position: inside; }
+.list-outside{ list-style-position: outside; }
+
+
+/*----------- Misc -----------*/
+.cursor-default	{ cursor: default; }
+.cursor-pointer	{ cursor: pointer; }
+
+
+/*----------- Colors -----------*/
+
+.bg-primary{ background: $primary-color }
+.bg-secondary{ background: $secondary-color }

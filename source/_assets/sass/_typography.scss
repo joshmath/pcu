@@ -1,0 +1,88 @@
+@font-face {
+    font-family: 'Benton Sans Compressed';
+    src: url('../../../assets/fonts/BentonSansCompressed-Bold.woff2') format('woff2'),
+        url('../../../assets/fonts/BentonSansCompressed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Benton Sans Compressed';
+    src: url('../../../assets/fonts/BentonSansCompressed-Regular.woff2') format('woff2'),
+        url('../../../assets/fonts/BentonSansCompressed-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Benton Sans';
+    src: url('../../../assets/fonts/BentonSans-Medium.woff2') format('woff2'),
+        url('../../../assets/fonts/BentonSans-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+
+@font-face {
+    font-family: 'Benton Sans';
+    src: url('../../../assets/fonts/BentonSans-Regular.woff2') format('woff2'),
+        url('../../../assets/fonts/BentonSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+*{
+    font-family: 'Benton Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,h5,h6,p,ol,li,ul{
+	margin: 0;
+	padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+/*----------- Typographic Scale -----------*/
+
+// 2 * (X / 5)
+// 2 * (3 / 5)
+
+// 10 = 4rem
+// 11 = 4.59479342rem
+// 12 = 5.2780316431rem
+// 13 = 6.062866266rem
+// 14 = 6.9644045064rem
+// 15 = 8rem
+// 16 = 9.18958684rem
+// 17 = 0.5560632862rem
+
+//px values are approximate based of a 16px starting font-size
+
+$step-up-9: 3.4822022532rem; //56px
+$step-up-8: 3.031433133rem; //48px
+$step-up-7: 2.6390158215rem; //42px
+$step-up-6: 2.29739671rem; //36px
+$step-up-5: 2rem; //32px
+$step-up-4: 1.7511rem; //28px
+$step-up-3: 1.5157rem; //24px
+$step-up-2: 1.3195rem; //21px
+$step-up-1: 1.1487rem; //18px
+/* baseline: 1rem */ //16px
+$step-down-1: 0.8706rem; //14px
+$step-down-2: 0.7579rem; //12px
+$step-down-3: 0.6599rem; //10px
+$step-down-4: 0.5745rem; //9px
+$step-down-5: 0.5rem; //
+
+/*----------- type helpers -----------*/
+
+//Site Specific Typography Starts HERE

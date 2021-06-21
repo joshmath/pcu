@@ -1,0 +1,145 @@
+/*=============================================>>>>>
+= MIXINS  =
+===============================================>>>>>*/
+
+/* Flexbox Mixin */
+
+@mixin flex($align, $justify, $direction: row){
+    display:flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $direction;
+}
+
+@mixin grid($column-count, $gap: 25px){
+  display:grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  grid-gap: $gap;
+}
+
+// @include flex(center, center, column);
+
+@mixin box_shadow ($level) {
+
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level == 4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level == 5 {
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+}
+
+// @include box_shadow(2);
+
+
+$tablet: 720px;
+$desktop: 1100px;
+$desktop-large: 1300px;
+$huge: 1400px;
+$hugest: 1920px;
+
+@mixin tablet {
+  @media (min-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
+@mixin desktop-large {
+  @media (min-width: #{$desktop-large}) {
+    @content;
+  }
+}
+
+@mixin huge {
+  @media (min-width: #{$huge}) {
+    @content;
+  }
+}
+
+@mixin hugest {
+  @media (min-width: #{$hugest}) {
+    @content;
+  }
+}
+
+@mixin custom($screen) {
+   @media (min-width: $screen+'px') {
+       @content;
+   }
+}
+
+
+@mixin linear-gradient($direction, $colors...) {
+  // Direction has been omitted and happens to be a color-stop
+  @if is-direction($direction) == false {
+    $colors: $direction, $colors;
+    $direction: 180deg;
+  }
+
+  background: nth(nth($colors, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $colors);
+  background: linear-gradient($direction, $colors);
+}
+
+
+
+// @param {Number}   $responsive  - Viewport-based size
+// @param {Number}   $min         - Minimum font size (px)
+// @param {Number}   $max         - Maximum font size (px)
+//                                  (optional)
+// @param {Number}   $fallback    - Fallback for viewport-
+//                                  based units (optional)
+//
+// @example scss - 5vw font size (with 50px fallback),
+//                  minumum of 35px and maximum of 150px
+//
+// @include responsive-font(5vw, 35px, 150px, 50px);
+
+@mixin responsive-font($responsive, $min, $max: false, $fallback: false) {
+  $responsive-unitless: $responsive / ($responsive - $responsive + 1);
+  $dimension: if(unit($responsive) == 'vh', 'height', 'width');
+  $min-breakpoint: $min / $responsive-unitless * 100;
+
+  @media (max-#{$dimension}: #{$min-breakpoint}) {
+    font-size: $min;
+  }
+
+  @if $max {
+    $max-breakpoint: $max / $responsive-unitless * 100;
+
+    @media (min-#{$dimension}: #{$max-breakpoint}) {
+      font-size: $max;
+    }
+  }
+
+  @if $fallback {
+    font-size: $fallback;
+  }
+
+  font-size: $responsive;
+}
+
+/*= End of MIXINS  =*/
+/*=============================================<<<<<*/
+
+//Slightly lighten a color
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+/// Slightly darken a color
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
